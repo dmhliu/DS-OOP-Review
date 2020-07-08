@@ -12,10 +12,11 @@ from game import Game
 
 class FootballGameTest(unittest.TestCase):
     '''test the class'''
+
     def test_field_goal_made(self):
         pass  # TODO
 
-    def test_get_winnerr(self):
+    def test_get_winner(self):
         pass  # TODO
 
 
@@ -24,6 +25,7 @@ class FootballPlayerTest(unittest.TestCase):
     yards=120, touchdowns=5, safety=1,
                  interceptions=0
     '''
+
     def test_default_player_yards(self):
         player = Player(name='Dude')
         self.assertEqual(player.yards, 120)
