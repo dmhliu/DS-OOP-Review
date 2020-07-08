@@ -36,7 +36,11 @@ class Game:
             self.score = score
         self.week = week
 
-    def touchdown(self, team, extra_point=1):
+    def get_score(self):
+        return self.score
+
+
+    def score_touchdown(self, team, extra_point=1):
         '''record td for a team
         Parameters
         -----------------------------
@@ -50,7 +54,7 @@ class Game:
         else:
             self.score[team] += (6 + extra_point)
 
-    def field_goal(self, team):
+    def score_field_goal(self, team):
         '''record td for a team
         Parameters
         -----------------------------
@@ -62,8 +66,11 @@ class Game:
         else:
             self.score[team] += 3
 
-    def safety(self, TODO):
-        pass  # TODO (a safety is worth 2 points)
+    def score_safety(self, team):
+        if team not in self.teams:
+            raise ValueError('team parameter must be in self.teams')
+        else:
+            self.score[team] += 2
 
     def get_winning_team(self):
         '''When game is done, this can be run to add attributes
@@ -79,4 +86,4 @@ class Game:
         self.winning_team_ = k[v.index(max(v))]
         self.losing_team_ = k[v.index(min(v))]
 
-        return self.winning_team_, self.losing_team_
+        return self.winning_team_
